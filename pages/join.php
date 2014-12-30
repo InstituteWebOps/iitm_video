@@ -1,18 +1,16 @@
+<?php require 'views/header.php'; ?>
+<script src="/iitm_video/public/js/simplewebrtc_latest.js"></script>
+<script src="/iitm_video/public/js/app.js"></script>
 
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-  <input type='text' placeholder='Room Name'>
 
-  <video height="300" id="localVideo"></video>
+
+
+
+  <video id="localVideo"></video>
+  <div id="remote">
   <div id="remotesVideos"></div>
-</body>
+</div>
 
-
-<script src="public/js/simplewebrtc_latest.js"></script>
-<script src="public/js/app.js"></script>
 <script>
 var webrtc = new SimpleWebRTC({
   // the id/element dom element that will hold "our" video
@@ -28,10 +26,10 @@ var webrtc = new SimpleWebRTC({
 // we have to wait until it's ready
 webrtc.on('readyToCall', function () {
   // you can name it anything
-  webrtc.joinRoom('<?= $_GET['room']? $_GET['r']:'default' ?>');
+  webrtc.joinRoom('<?= $_GET['room']? $_GET['room']:'default' ?>');
 });
 
 </script>
 
 
-</html>
+<?php require 'views/footer.php'; ?>

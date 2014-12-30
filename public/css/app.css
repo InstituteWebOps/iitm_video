@@ -1,0 +1,18 @@
+.room_form{
+  margin:auto !important;
+  float:none !important;
+}
+#localVideo{
+  position:fixed;
+  bottom:5px;
+  right:5px;
+  height:200px;
+}
+#remotesVideos {
+  width:700px;
+  margin:auto;
+}
+
+#remotesVideos video{
+  max-width:700px;
+}

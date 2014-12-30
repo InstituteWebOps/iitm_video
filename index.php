@@ -1,72 +1,22 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-</head>
 <?php
+@session_start();
 
+require 'config/OAuth_config.php';
+require 'libs/OAuth.php';
 
-
+$oauth = new OAuth();
+$oauth->init();
+if($oauth->authCode){
+  $_SESSION['authcode'] = $oauth->authCode;
+}
+if($oauth->user['loggedIn']){
+  $_SESSION['user'] = $oauth->user;
 $url  = rtrim($_GET['url'],'/');
 $url = explode('/', $url);
-if($url[0]=='join' && $url[1]){
-$room = $url[1];
-?>
-<body>
-
-  <video height="300" id="localVideo"></video>
-  <div id="remotesVideos"></div>
-</body>
-
-
-<script src="/iitm_video/public/js/jquery.js"></script>
-<script src="/iitm_video/public/js/simplewebrtc_latest.js"></script>
-<script src="/iitm_video/public/js/app.js"></script>
-<script>
-var webrtc = new SimpleWebRTC({
-  // the id/element dom element that will hold "our" video
-  localVideoEl: 'localVideo',
-  // the id/element dom element that will hold remote videos
-  remoteVideosEl: 'remotesVideos',
-  // immediately ask for camera access
-  autoRequestMedia: true
-});
-
-
-
-// we have to wait until it's ready
-webrtc.on('readyToCall', function () {
-  // you can name it anything
-  webrtc.joinRoom('<?php $room? $room:'default' ?>');
-});
-
-</script>
-
-
-</html>
-
-<?php
+if($url[0]==''){
+  $url[0]='index';
 }
-else {
-  if($url[0]!='' && $url[0]!='index'){
-    ?>
-<script>
-window.location = '/iitm_video/';
-</script>
-    <?php
-  }
-  ?>
-  <body>
-      <input type='text' placeholder='Room Name' id="room" name="room">
-      <input type='submit' value='Join' onclick="goToRoom()" id="submit">
-  </body>
-  <script>
-  function goToRoom(){
-    var room = document.getElementById('room').value;
-    window.location = 'join/'+room;
-  };
 
-  </script>
-
-  <?php
+require('pages/'.$url[0].'.php');
 }
