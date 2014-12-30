@@ -2,11 +2,11 @@
 <html>
 <head>
 <title>IITM | Video Conf</title>
-<link rel="stylesheet" href="http://bootswatch.com/paper/bootstrap.min.css">
+<link rel="stylesheet" href="/iitm_video/public/css/bootstrap.min.css">
 <link rel="stylesheet" href="/iitm_video/public/css/app.css">
 
 <!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="/iitm_video/public/css/bootstrap-theme.min.css">
 
 </head>
 
