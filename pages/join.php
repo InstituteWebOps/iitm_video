@@ -1,6 +1,5 @@
 <?php require 'views/header.php'; ?>
 <script src="/iitm_video/public/js/simplewebrtc_latest.js"></script>
-<script src="/iitm_video/public/js/app.js"></script>
 
 
 
@@ -10,7 +9,10 @@
   <div id="remote">
   <div id="remotesVideos"></div>
 </div>
-
+<div class="action_bar">
+<button id="mic_btn" class="btn btn-primary ">Mic Off</button>
+<button id="video_btn" class="btn btn-primary ">Video Off</button>
+</div>
 <script>
 var webrtc = new SimpleWebRTC({
   // the id/element dom element that will hold "our" video

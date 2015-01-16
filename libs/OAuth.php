@@ -54,7 +54,7 @@ class OAuth {
   }
 
   function getToken() {
-    $contents = file_get_contents($this->tokenURL);
+    $contents = str_replace('&quot;','"',file_get_contents($this->tokenURL));
     $contents = json_decode($contents,true);
     $this->accessToken = $contents['access_token'];
   }
@@ -81,7 +81,7 @@ class OAuth {
     header('Location:'.$url);
   }
   function getUser() {
-    $contents = file_get_contents($this->accessURL);
+    $contents = str_replace('&quot;','"',file_get_contents($this->accessURL));
     $this->user = json_decode($contents, true);
   }
 }
